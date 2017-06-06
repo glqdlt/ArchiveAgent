@@ -3,6 +3,7 @@ package org.glqdlt.myarchive.socks.client;
 import java.net.InetSocketAddress;
 
 import akka.actor.ActorRef;
+import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
@@ -22,6 +23,10 @@ public class ClientActor extends UntypedActor {
 	ActorRef connection;
 
 	InetSocketAddress remote;
+	
+    public static Props props(InetSocketAddress remote, ActorRef tcpActor) {
+        return Props.create(ClientActor.class, remote, tcpActor);
+    }
 
 	public ClientActor(InetSocketAddress remote, ActorRef connection) {
 
