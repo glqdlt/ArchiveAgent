@@ -1,4 +1,4 @@
-package org.glqdlt.myarchive.socks;
+package org.glqdlt.myarchive.socks.server;
 
 import java.net.InetSocketAddress;
 
@@ -12,15 +12,15 @@ import akka.event.LoggingAdapter;
 import akka.io.Tcp;
 import akka.io.TcpMessage;
 
-public class Listener extends UntypedActor {
+public class ServerActor extends UntypedActor {
 
 	final ActorRef tcpManager = Tcp.get(getContext().system()).getManager();
 
 	Config config;
 	LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
-	public Listener() {
-//		this.config = config;
+	public ServerActor() {
+		// this.config = config;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.glqdlt.myarchive.socks;
+package org.glqdlt.myarchive.socks.server;
 
 import java.net.InetSocketAddress;
 
@@ -29,9 +29,9 @@ public class EchoActor extends UntypedActor {
 
 		if (msg instanceof Tcp.Received) {
 			ByteString data = ((Tcp.Received) msg).data();
-			log.info("msg..: " + data);
+			log.info("msg..: " + data.utf8String());
 			Tcp.Command cmd = TcpMessage.write(data);
-			// echo.. ping 온 것을 그대로 ping 으로 메아리 
+			// echo.. ping 온 것을 그대로 ping 으로 메아리
 			connection.tell(cmd, getSelf());
 
 		} else if (msg instanceof Tcp.ConnectionClosed) {
